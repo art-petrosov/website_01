@@ -1,2 +1,2 @@
 # website_01
-Website for my friend Artem Mironenki
+Website for my friend Artem Mironenko
