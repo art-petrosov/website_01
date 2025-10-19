@@ -1,86 +1,75 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>КРУЖЕВА — магазин нижнего белья</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <img src="assets/logo.png" alt="КРУЖЕВА" class="logo" />
+    <nav>
+      <a href="#about">О нас</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
 
-body {
-  font-family: 'Inter', sans-serif;
-  color: #222;
-  background: #fff;
-}
+  <section id="hero" class="section hero">
+    <div class="hero-content">
+      <h1>КРУЖЕВА</h1>
+      <p>Элегантное бельё для уверенных женщин</p>
+      <a href="#catalog" class="btn">Смотреть каталог</a>
+    </div>
+  </section>
 
-header.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 10%;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-}
+  <section id="about" class="section">
+    <h2>О нас</h2>
+    <p>“КРУЖЕВА” — это сочетание нежности, комфорта и уверенности. Мы создаём бельё, которое подчеркивает женственность.</p>
+  </section>
 
-.logo { height: 40px; }
+  <section id="catalog" class="section catalog">
+    <h2>Каталог</h2>
+    <div class="items">
+      <div class="item">
+        <img src="https://via.placeholder.com/250" alt="Комплект 1">
+        <h3>Комплект “Нежность”</h3>
+        <p>3200 ₽</p>
+      </div>
+      <div class="item">
+        <img src="https://via.placeholder.com/250" alt="Комплект 2">
+        <h3>Комплект “Элегия”</h3>
+        <p>2900 ₽</p>
+      </div>
+    </div>
+  </section>
 
-nav a {
-  margin: 0 15px;
-  color: #b84d7a;
-  text-decoration: none;
-  font-weight: 500;
-}
+  <section id="contacts" class="section contacts">
+    <h2>Контакты</h2>
+    <div class="contacts-blocks">
+      <div>
+        <h3>Связаться напрямую</h3>
+        <ul>
+          <li><a href="mailto:info@kruzheva.ru">info@kruzheva.ru</a></li>
+          <li><a href="https://t.me/kruzheva_shop" target="_blank">Telegram</a></li>
+          <li><a href="tel:+79991234567">+7 (999) 123-45-67</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Реквизиты</h3>
+        <p>ООО «КРУЖЕВА»</p>
+        <p>ИНН 7701234567</p>
+        <p>ОГРН 1234567890123</p>
+        <p>г. Москва, ул. Цветочная, д. 10</p>
+      </div>
+    </div>
+  </section>
 
-nav a:hover { text-decoration: underline; }
+  <footer>
+    <p>© 2025 КРУЖЕВА. Все права защищены.</p>
+  </footer>
 
-.section {
-  padding: 80px 10%;
-  text-align: center;
-}
-
-.hero {
-  background: linear-gradient(135deg, #fce4ec, #fdeef3);
-  color: #b84d7a;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.btn {
-  display: inline-block;
-  background: #b84d7a;
-  color: #fff;
-  padding: 12px 25px;
-  border-radius: 8px;
-  margin-top: 20px;
-  text-decoration: none;
-}
-
-.catalog .items {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.item {
-  width: 250px;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 15px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.contacts-blocks {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 50px;
-  margin-top: 20px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #f8f0f5;
-  color: #b84d7a;
-}
+  <script src="script.js"></script>
+</body>
+</html>
