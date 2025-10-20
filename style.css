@@ -1,15 +1,15 @@
 /* =========
-   Базовые настройки
+   БАЗА
    ========= */
 :root{
   --sky-50:#f0f9ff;
   --sky-100:#e0f2fe;
   --sky-200:#bae6fd;
+  --sky-300:#7dd3fc;
   --sky-500:#0ea5e9;
   --sky-600:#0284c7;
   --slate-500:#64748b;
   --slate-600:#475569;
-  --ring:#7dd3fc;
   --radius:16px;
 }
 
@@ -18,7 +18,7 @@ html { scroll-behavior: smooth; }
 body.no-scroll { overflow: hidden; }
 
 /* =========
-   Утилиты под карточки/инпуты (аналог Tailwind-стилей)
+   КАРТОЧКИ / ИНПУТЫ
    ========= */
 .card{
   border:1px solid var(--sky-100);
@@ -29,7 +29,7 @@ body.no-scroll { overflow: hidden; }
   transition: box-shadow .2s ease, transform .2s ease;
 }
 .card:hover{
-  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.10);
+  box-shadow: 0 8px 26px rgba(2, 132, 199, 0.12);
   transform: translateY(-2px);
 }
 
@@ -43,19 +43,27 @@ body.no-scroll { overflow: hidden; }
   transition: box-shadow .15s ease, border-color .15s ease;
 }
 .input:focus{
-  border-color: var(--ring);
+  border-color: var(--sky-300);
   box-shadow: 0 0 0 4px rgba(125, 211, 252, .35);
 }
 
+/* Состояния подсказок */
+.msg{
+  font-size: 12px;
+  line-height: 1.4;
+}
+.msg--error{ color:#b91c1c; }     /* красный-700 */
+.msg--ok{ color:#0369a1; }        /* sky-800 */
+
 /* =========
-   Хедер: тень при прокрутке
+   ХЕДЕР — ТЕНЬ ПРИ СКРОЛЛЕ
    ========= */
 .header--shadow{
-  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.08);
+  box-shadow: 0 8px 26px rgba(2, 132, 199, 0.10);
 }
 
 /* =========
-   Анимации появлений секций
+   REVEAL-Анимация
    ========= */
 .reveal{
   opacity: 0;
@@ -66,35 +74,15 @@ body.no-scroll { overflow: hidden; }
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Уважение к предпочтениям пользователя */
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none; }
 }
 
 /* =========
-   FAQ: аккуратный summary и индикатор
+   FAQ (убираем стандартный маркер)
    ========= */
-#faq-list details{
-  border-bottom:1px solid var(--sky-100);
-}
-#faq-list details:last-child{
-  border-bottom:0;
-}
 #faq-list summary{
   list-style: none;
   user-select: none;
 }
 #faq-list summary::-webkit-details-marker{ display:none; }
-
-/* Плюс/минус справа (если не хочешь текстовые «Раскрыть/Скрыть») */
-/*
-#faq-list summary::after{
-  content:"+";
-  color: var(--sky-600);
-  font-weight:600;
-}
-#faq-list details[open] summary::after{
-  content:"–";
-}
-*/
