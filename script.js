@@ -107,3 +107,57 @@ async function trySendToServer(payload) {
 
   const controller = new AbortController();
   const t = setTimeout(() => controller.abort(), 7000); // таймаут 7s
+try {
+    const res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    clearTimeout(t);
+    return { ok: res.ok };
+  } catch (e) {
+    clearTimeout(t);
+    return { ok: false };
+  }
+}
+
+// ===== ВАЛИДАЦИЯ + SUBMIT С FALLBACK
+form?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const errText = textsHolder?.dataset.error || "Заполните имя, email и описание проекта.";
+  const okText = textsHolder?.dataset.success || "Спасибо! Заявка отправлена.";
+
+  const name = nameInput?.value?.trim();
+  const email = emailInput?.value?.trim();
+  const tg = document.getElementById("f-tg")?.value?.trim();
+  const message = msgInput?.value?.trim();
+
+  // простая валидация
+  const emailOk = !!email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!name  !emailOk  !message) {
+    setHint(errText, "error");
+    return;
+  }
+
+  setHint("Отправляем заявку…");
+
+  // попытка отправки на сервер
+  const payload = { name, email, tg, message, ts: Date.now() };
+  const server = await trySendToServer(payload);
+
+  if (server.ok) {
+    setHint(okText, "ok");
+    form.reset();
+  } else {
+    // Fallback через mailto
+    setHint(
+      okText,
+      "ok"
+    );
+    const href = buildMailtoHref({ name, email, tg, message });
+    // Откроем почтовый клиент с готовым письмом
+    window.location.href = href;
+    form.reset();
+  }
+});
